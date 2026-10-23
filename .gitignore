@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+backend/**/__pycache__/
+backend/venv/
+backend/.venv/
+env/
+.env
+
+# Build outputs
+frontend/dist/
+frontend/build/
+
+# Chroma & Local Storage / Vector DB
+backend/data/
+backend/data/chroma_db/
+backend/data/uploads/
+*.pyc
+.DS_Store
+Thumbs.db

@@ -1,0 +1,39 @@
+# COMPUTER NETWORKS: UNIT 3 STUDY NOTES
+## Topic: Network Layer, IP Addressing, Subnetting, and Routing Protocols
+
+### 1. IPv4 Addressing and CIDR
+IPv4 addresses are 32-bit logical addresses partitioned into four 8-bit octets.
+Classful addressing divided IPv4 into Classes A, B, C, D, and E.
+To mitigate address exhaustion, CIDR (Classless Inter-Domain Routing) introduced variable prefix lengths denoted with a slash notation (e.g., /24, /26, /28).
+
+### 2. Subnetting Fundamentals & Formulas
+Subnetting involves borrowing bits from the host portion of an IP address to create smaller, manageable subnets.
+- Total Subnets Created: 2^(Borrowed Bits)
+- Total Addresses per Subnet: 2^(Host Bits)
+- Usable Hosts per Subnet: 2^(Host Bits) - 2 (Subtracting Network ID and Broadcast Address)
+- Block Size (Magic Number): 256 - (Decimal Value of Subnet Octet)
+
+Example (/26 Subnet Mask):
+- Subnet Mask: 255.255.255.192
+- Borrowed Bits: 2 (128 + 64 = 192)
+- Remaining Host Bits: 32 - 26 = 6
+- Total Addresses per Subnet: 2^6 = 64
+- Usable Hosts: 64 - 2 = 62
+- Subnet Blocks: .0, .64, .128, .192
+
+### 3. Routing Principles & Forwarding
+Routers determine the optimal path for packets across interconnected networks.
+- Longest Prefix Match: When multiple route entries match a destination IP, the router selects the entry with the longest prefix (/24 over /16).
+- Routing Table components: Destination Network, Next Hop, Outgoing Interface, Administrative Distance, Metric.
+
+### 4. Distance Vector Routing (RIP)
+- Algorithm: Bellman-Ford equation: Dx(y) = min_v { c(x,v) + Dv(y) }
+- Metric: Hop count (Maximum allowed is 15 hops; 16 signifies unreachable).
+- Count-to-Infinity Problem: Solved using Split Horizon, Poison Reverse, and Hold-Down Timers.
+
+### 5. Link-State Routing (OSPF)
+- Algorithm: Dijkstra's Shortest Path First (SPF).
+- Protocol Features:
+  - Link State Advertisements (LSAs) flooded across areas.
+  - Hierarchical structure with Area 0 (Backbone).
+  - Fast convergence and no hop-count limitations.
